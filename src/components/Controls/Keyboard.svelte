@@ -25,7 +25,7 @@
 				}
 				
 				const pos_candidate = strategyService.pastSolutionByStrategy.getPosCandidate(userGrid.get(), strategyService.strategyNameList, $cursor.x, $cursor.y);
-				console.log(pos_candidate);
+				// console.log(pos_candidate);
 				if(pos_candidate.length > 1){	// 进入分支
 					console.log('branch');
 					console.log(userGrid.get());
