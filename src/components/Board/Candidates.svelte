@@ -23,7 +23,7 @@
 		@apply h-full w-full row-end-auto col-end-auto leading-full;
 	}
 	.color-visited-0 {
-		background-color: red; 
+		/* background-color: red;  */
 	}
 	.color-visited-1 {
 

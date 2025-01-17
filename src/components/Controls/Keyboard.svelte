@@ -12,6 +12,7 @@
 	import { candidates as Candidate } from '@sudoku/stores/candidates';
 
 	function handleKeyButton(num) {
+		// console.log(num);
 		if (!$keyboardDisabled) {
 			if ($notes) {
 				if (num === 0) {
