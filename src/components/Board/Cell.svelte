@@ -68,14 +68,18 @@
 					{#if hint.length === 1}
 						<span class="hint-number">{hint}</span>
 					{:else if hint.length <= kStore.get() }
-						<Candidates {candidates} />
+						<Candidates {candidates} 
+									cellX={cellX-1}
+									cellY={cellY-1}/>
 					{/if}
 				</button>
 			{:else}
 				<!-- 显示原有候选数字或当前值 -->
 				<button class="cell-btn" on:click={() => cursor.set(cellX - 1, cellY - 1)}>
 					{#if candidates}
-						<Candidates {candidates} />
+						<Candidates {candidates} 
+									cellX={cellX-1}
+									cellY={cellY-1}/>
 					{:else}
 						<span class="cell-text">{value || ''}</span>
 					{/if}
