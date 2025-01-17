@@ -9,7 +9,8 @@
 	import { keyboardDisabled } from '@sudoku/stores/keyboard';
     import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
 	import { strategyService } from '@sudoku/stores/strategyService';
-
+	import { candidates as Candidate } from '@sudoku/stores/candidates';
+	
 	function handleKeyButton(num) {
 		if (!$keyboardDisabled) {
 			if ($notes) {
@@ -37,6 +38,7 @@
 					}
 				}
 				userGrid.set($cursor, num);
+				Candidate.syncWithStrategy();
 				stateManager.add_state(userGrid.get());	// 添加状态
 				UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
 				// console.log('keyboard input');
