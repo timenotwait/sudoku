@@ -10,7 +10,7 @@
     import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
 	import { strategyService } from '@sudoku/stores/strategyService';
 	import { candidates as Candidate } from '@sudoku/stores/candidates';
-	
+
 	function handleKeyButton(num) {
 		if (!$keyboardDisabled) {
 			if ($notes) {
@@ -37,6 +37,7 @@
 						UndoRedoManager.newBranch(stateManager.get_index(userGrid.get()), $cursor.x, $cursor.y, num);
 					}
 				}
+
 				userGrid.set($cursor, num);
 				Candidate.syncWithStrategy();
 				stateManager.add_state(userGrid.get());	// 添加状态
@@ -44,6 +45,7 @@
 				// console.log('keyboard input');
 				// console.log(userGrid.get());
 				// console.log(stateManager.get_state_dict());
+				// console.log(stateManager.get_index_dict());
 			}
 		}
 	}

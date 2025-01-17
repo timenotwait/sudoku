@@ -38,9 +38,10 @@
 
 			stateManager.add_state(userGrid.get());
 			UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
-			// console.log('hint input');
+			console.log('hint input');
 			// console.log(userGrid.get());
 			console.log(stateManager.get_state_dict());
+			console.log(stateManager.get_index_dict());
 		}
 		cursor.set(cellX - 1, cellY - 1);
 
