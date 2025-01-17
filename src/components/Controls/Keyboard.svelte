@@ -25,11 +25,11 @@
 					candidates.clear($cursor);
 				}
 				
-				const pos_candidate = strategyService.pastSolutionByStrategy.getPosCandidate(userGrid.get(), strategyService.strategyNameList, $cursor.x, $cursor.y);
-				// console.log(pos_candidate);
+				const pos_candidate = strategyService.pastSolutionByStrategy.getPosCandidate(userGrid.get(), strategyService.strategyNameList,
+																							 strategyService.hintStep, $cursor.x, $cursor.y);
 				if(pos_candidate.length > 1){	// 进入分支
-					console.log('branch');
-					console.log(userGrid.get());
+					// console.log('branch');
+					// console.log(userGrid.get());
 					if(UndoRedoManager.getUndoListSize() == 1) {	// 一开始就进入分支
 						UndoRedoManager.newBranch(0, $cursor.x, $cursor.y, num);
 					}

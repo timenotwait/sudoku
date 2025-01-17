@@ -14,8 +14,8 @@
 	function handleSave() {
 		settings.hintsLimited = hintsLimited;
 
-		if (settings.hints < 0) settings.hints = 0;
-		if (settings.hints > MAX_HINTS) settings.hints = MAX_HINTS;
+		// if (settings.hints < 0) settings.hints = 0;
+		// if (settings.hints > MAX_HINTS) settings.hints = MAX_HINTS;
 
 		settingsStore.set(settings);
 		hideModal();
@@ -41,15 +41,13 @@
 	<Switch bind:checked={hintsLimited} text="Limit the number of hints available" id="hints-limited" />
 	{#if hintsLimited}
 		<div transition:slide class="inline-flex items-center">
-			<label for="hints" class="flex-grow text-lg">Number of available hints</label>
-
-			<input bind:value={settings.hints} class="number-input" id="hints" name="hints" type="number" min="0" max="81" />
+			<label for="hints" class="flex-grow text-lg">Depth of strategy performing</label>
+			<input bind:value={settings.hintstep} class="number-input" id="hints" name="hints" type="number" min="1" max="10000000" />
 		</div>
 	{/if}
 	<div transition:slide class="inline-flex items-center">
-		<label for="hints" class="flex-grow text-lg">Number of hint steps</label>
-
-		<input bind:value={settings.k} class="number-input" id="k" name="k" type="number" min="1" max="8" />
+		<label for="hints" class="flex-grow text-lg">Number of showing-hint-candidates</label>
+		<input bind:value={settings.k} class="number-input" id="k" name="k" type="number" min="1" max="9" />
 	</div>
 	<Switch bind:checked={settings.highlightCells} text="Highlight cells in same row/column/box" id="highlight-cells" />
 	<Switch bind:checked={settings.highlightSame} text="Highlight cells with the same number" id="highlight-matching" />
@@ -63,7 +61,7 @@
 
 <style>
 	.number-input {
-		@apply w-12 h-8 px-1 border-2 rounded-lg shadow-inner text-xl text-center leading-none;
+		@apply w-20 h-8 px-1 border-2 rounded-lg shadow-inner text-xl text-center leading-none;
 	}
 
 	.number-input:focus {
