@@ -1,5 +1,5 @@
 <script>
-	import { userGrid } from '@sudoku/stores/grid';
+	import { grid, userGrid } from '@sudoku/stores/grid';
 	import { cursor } from '@sudoku/stores/cursor';
 	import { notes } from '@sudoku/stores/notes';
 	import { candidates } from '@sudoku/stores/candidates';
@@ -8,6 +8,8 @@
 	// TODO: Improve keyboardDisabled
 	import { keyboardDisabled } from '@sudoku/stores/keyboard';
     import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
+	import { strategyService } from '@sudoku/stores/strategyService';
+	import { candidates as Candidate } from '@sudoku/stores/candidates';
 
 	function handleKeyButton(num) {
 		if (!$keyboardDisabled) {
@@ -22,13 +24,28 @@
 				if ($candidates.hasOwnProperty($cursor.x + ',' + $cursor.y)) {
 					candidates.clear($cursor);
 				}
+				
+				const pos_candidate = strategyService.pastSolutionByStrategy.getPosCandidate(userGrid.get(), strategyService.strategyNameList,
+																							 strategyService.hintStep, $cursor.x, $cursor.y);
+				if(pos_candidate.length > 1){	// 进入分支
+					// console.log('branch');
+					// console.log(userGrid.get());
+					if(UndoRedoManager.getUndoListSize() == 1) {	// 一开始就进入分支
+						UndoRedoManager.newBranch(0, $cursor.x, $cursor.y, num);
+					}
+					else {
+						UndoRedoManager.newBranch(stateManager.get_index(userGrid.get()), $cursor.x, $cursor.y, num);
+					}
+				}
 
 				userGrid.set($cursor, num);
+				Candidate.syncWithStrategy();
 				stateManager.add_state(userGrid.get());	// 添加状态
 				UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
 				// console.log('keyboard input');
 				// console.log(userGrid.get());
 				// console.log(stateManager.get_state_dict());
+				// console.log(stateManager.get_index_dict());
 			}
 		}
 	}
