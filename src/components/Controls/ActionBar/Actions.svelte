@@ -9,7 +9,7 @@
 	import { showHints } from '@sudoku/stores/hints';
 	import { backtrack } from '@sudoku/stores/backtrack';
 	import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
-
+	import { pauseGame, resumeGame } from '@sudoku/game';
 
 	function handleStrategy() {
 		candidates.syncWithStrategy();
@@ -22,6 +22,8 @@
 
 	function handleUndo() {
 		UndoRedoManager.undo();
+		pauseGame();
+		setTimeout(resumeGame, 0);
 	}
 
 	function handleRedo() {

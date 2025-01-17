@@ -8,19 +8,25 @@
 	export let cellX, cellY;
 
 
-	let currentRemoveCandidate = UndoRedoManager.getRemoveStateCandidate(stateManager.get_index(userGrid.get()));
+	// let currentRemoveCandidate = UndoRedoManager.getRemoveStateCandidate(stateManager.get_index(userGrid.get()));
+	let currentRemoveCandidate = UndoRedoManager.removeCandidateGet(stateManager.get_index(userGrid.get()));
 	if(currentRemoveCandidate) {
 		console.log('currentRemoveCandidate');
 		console.log(currentRemoveCandidate);
 		console.log(cellX, cellY);	// X是列 Y是行
-		console.log(currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX));
+		console.log(cellY*SUDOKU_SIZE+cellX);
+		console.log(currentRemoveCandidate[0].get(cellY*SUDOKU_SIZE+cellX));
 	}
-	
+
+	function checkIsVisited(index) {
+		return currentRemoveCandidate && currentRemoveCandidate[0].get(cellY*SUDOKU_SIZE+cellX) && !currentRemoveCandidate[0].get(cellY*SUDOKU_SIZE+cellX).includes(index + 1)
+	}
+
 </script>
 
 <div class="candidate-grid">
 	{#each CANDIDATE_COORDS as [row, col], index}
-		<div class="candidate row-start-{row} col-start-{col} color-visited-{Number(currentRemoveCandidate && currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX) && !currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX).includes(index + 1))}"
+		<div class="candidate row-start-{row} col-start-{col} color-visited-{Number(checkIsVisited(index))}"
 		     class:invisible={!candidates.includes(index + 1)}
 		     class:visible={candidates.includes(index + 1)}>
 			{index + 1}
