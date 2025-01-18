@@ -1,17 +1,18 @@
 <script>
 	import Timer from './Timer.svelte';
 	import Actions from './Actions.svelte';
+	import TextBox from './TextBox.svelte';
 </script>
 
-<div class="action-bar space-y-3 xs:space-y-0">
+<div class="action-bar space-x-5">
 	<Timer />
-
+	<TextBox />
 	<Actions />
 </div>
 
 <style>
 	.action-bar {
-		@apply flex flex-col flex-wrap justify-between pb-5;
+		@apply flex justify-between items-center pb-5;
 	}
 
 	@screen xs {
