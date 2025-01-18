@@ -10,6 +10,7 @@
     import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
 	import { strategyService } from '@sudoku/stores/strategyService';
 	import { candidates as Candidate } from '@sudoku/stores/candidates';
+	import { pauseGame, resumeGame } from '@sudoku/game'
 
 	function handleKeyButton(num) {
 		if (!$keyboardDisabled) {
@@ -42,6 +43,9 @@
 				Candidate.syncWithStrategy();
 				stateManager.add_state(userGrid.get());	// 添加状态
 				UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
+
+				pauseGame();
+				setTimeout(resumeGame, 1);
 				// console.log('keyboard input');
 				// console.log(userGrid.get());
 				// console.log(stateManager.get_state_dict());

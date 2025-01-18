@@ -10,10 +10,10 @@
 
 	let currentRemoveCandidate = UndoRedoManager.getRemoveStateCandidate(stateManager.get_index(userGrid.get()));
 	if(currentRemoveCandidate) {
-		console.log('currentRemoveCandidate');
-		console.log(currentRemoveCandidate);
-		console.log(cellX, cellY);	// X是列 Y是行
-		console.log(currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX));
+		// console.log('currentRemoveCandidate');
+		// console.log(currentRemoveCandidate);
+		// console.log(cellX, cellY);	// X是列 Y是行
+		// console.log(currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX));
 	}
 	
 </script>
@@ -37,7 +37,7 @@
 		@apply h-full w-full row-end-auto col-end-auto leading-full;
 	}
 	.color-visited-0 {
-		background-color: red;
+		background-color: gray;
 	}
 	.color-visited-1 {
 

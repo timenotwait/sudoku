@@ -8,6 +8,7 @@
 	import { candidates as Candidate } from '@sudoku/stores/candidates';
 	import { stateManager } from '@sudoku/stores/stateManager';
 	import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
+	import { pauseGame, resumeGame } from '@sudoku/game'
 
 	export let value;
 	export let cellX;
@@ -38,6 +39,8 @@
 
 			stateManager.add_state(userGrid.get());
 			UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
+			pauseGame();
+			setTimeout(resumeGame, 1);
 			// console.log('hint input');
 			// console.log(userGrid.get());
 			// console.log(stateManager.get_state_dict());

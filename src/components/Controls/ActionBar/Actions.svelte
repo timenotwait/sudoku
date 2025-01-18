@@ -9,6 +9,7 @@
 	import { showHints } from '@sudoku/stores/hints';
 	import { backtrack } from '@sudoku/stores/backtrack';
 	import { UndoRedoManager } from '@sudoku/stores/UndoRedoManager';
+	import { pauseGame, resumeGame } from '@sudoku/game'
 
 
 	function handleStrategy() {
@@ -22,19 +23,25 @@
 
 	function handleUndo() {
 		UndoRedoManager.undo();
+		pauseGame();
+		setTimeout(resumeGame, 1);
 	}
 
 	function handleRedo() {
 		UndoRedoManager.redo();
+		pauseGame();
+		setTimeout(resumeGame, 1);
 	}
 
 	function handleBacktrack() {
 		UndoRedoManager.returnToBranch();
+		pauseGame();
+		setTimeout(resumeGame, 1);
 	}
 </script>
 
 <div class="action-buttons space-x-3">
-	<button class="btn btn-round" disabled={($gamePaused )} on:click={handleBacktrack} title="Backtrack">
+	<button class="btn btn-round" disabled={($gamePaused || !$backtrack)} on:click={handleBacktrack} title="Backtrack">
 		<svg class="icon-outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5 a4 4 3 0 15 15M12 20 l0 -5M15 23 l-3 -2 " />
 		</svg>
