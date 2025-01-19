@@ -41,10 +41,6 @@
 			UndoRedoManager.newAction(stateManager.get_index(userGrid.get()));
 			pauseGame();
 			setTimeout(resumeGame, 1);
-			// console.log('hint input');
-			// console.log(userGrid.get());
-			// console.log(stateManager.get_state_dict());
-			// console.log(stateManager.get_index_dict());
 		}
 		cursor.set(cellX - 1, cellY - 1);
 

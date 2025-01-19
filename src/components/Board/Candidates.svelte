@@ -9,12 +9,6 @@
 
 
 	let currentRemoveCandidate = UndoRedoManager.getRemoveStateCandidate(stateManager.get_index(userGrid.get()));
-	if(currentRemoveCandidate) {
-		// console.log('currentRemoveCandidate');
-		// console.log(currentRemoveCandidate);
-		// console.log(cellX, cellY);	// X是列 Y是行
-		// console.log(currentRemoveCandidate.get(cellY*SUDOKU_SIZE+cellX));
-	}
 	
 </script>
 

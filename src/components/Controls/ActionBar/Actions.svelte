@@ -1,10 +1,5 @@
 <script>
 	import { candidates } from '@sudoku/stores/candidates';
-	import { userGrid } from '@sudoku/stores/grid';
-	import { cursor } from '@sudoku/stores/cursor';
-	import { notes } from '@sudoku/stores/notes';
-	import { settings } from '@sudoku/stores/settings';
-	import { keyboardDisabled } from '@sudoku/stores/keyboard';
 	import { gamePaused } from '@sudoku/stores/game';
 	import { showHints } from '@sudoku/stores/hints';
 	import { backtrack } from '@sudoku/stores/backtrack';
