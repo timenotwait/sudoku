@@ -1,6 +1,6 @@
 {
 	"name": "sudoku-lele",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "rollup -c --environment NODE_ENV:production",

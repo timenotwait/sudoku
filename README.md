@@ -1,6 +1,6 @@
 # Sudoku LeLe
 
-Welcome to Sudoku LeLe.This project is a interactive Sudoku game built with Svelte and TailwindCSS.It’s based on the original repository by [jonasgeiler](https://github.com/jonasgeiler/sudoku)., with additional features:
+Welcome to Sudoku LeLe.This project is an interactive Sudoku game built with Svelte and TailwindCSS.It’s based on the original repository by [jonasgeiler](https://github.com/jonasgeiler/sudoku)., with additional features:
 
 ### Features
 
